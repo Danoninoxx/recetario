@@ -1,4 +1,4 @@
-@if(state().loading){
+@if($state().loading){
     <div
     class="flex items-center justify-center min-h-screen bg-gray-50 bg-opacity-80"
     >
@@ -8,7 +8,7 @@
     ></div>
     </div>
 }
-@else if(state().error){
+@else if($state().error){
     <div class="flex items-center justify-center min-h-screen bg-gray-50">
     <div
     class="bg-red-100 border border-red-400 text-red-700 px-6 py-4 rounded-lg
@@ -22,7 +22,7 @@
     <ul
     class="max-w-md mx-auto bg-white rounded-lg shadow-md divide-y divide-gray-200"
     >
-    @for(item of state().data; track item.name){
+    @for(item of $state().data; track item.name){
         <li
         class="px-6 py-4 cursor-pointer hover:bg-gray-100 transition-colors"
         (click)="listRecipes(item.name)">

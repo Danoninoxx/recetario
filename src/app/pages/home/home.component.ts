@@ -14,7 +14,7 @@ export class HomeComponent {
   api = inject(ApiService);
   router = inject(Router);
 
-  state:WritableSignal<any> = signal({
+  $state:WritableSignal<any> = signal({
     type:'nationality',
     loading:false,
     error:false,
@@ -27,7 +27,7 @@ export class HomeComponent {
     //2 - Llamar al servicio
 
     // Hemos recibido un cambio en la ruta
-    this.state.update(state => (
+    this.$state.update(state => (
       {...state, loading:true, type:type}
       )
     );
@@ -42,7 +42,7 @@ export class HomeComponent {
         break;
     }
     request.subscribe((data:any) => {
-      this.state.update(state => (
+      this.$state.update(state => (
         {...state, loading:false, error:false, 
           data:data.map((m:any) => (
             type == 'category' ? ({name:m.strCategory}) : ({name:m.strArea})))
@@ -52,7 +52,7 @@ export class HomeComponent {
     },
     (err) => {
       console.log(err)
-      this.state.update(state => (
+      this.$state.update(state => (
         {...state, loading:false, error:true, data:[]}
       ))
     });
@@ -60,6 +60,6 @@ export class HomeComponent {
 
   listRecipes(ingredient: string) {
     // Ir a la página /recipe/tipo/ingredient
-    this.router.navigate(['recipes', this.state().type, ingredient]);
+    this.router.navigate(['recipes', this.$state().type, ingredient]);
   }
 }
