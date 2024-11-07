@@ -1,15 +1,18 @@
 import { Component, inject, Input, signal, WritableSignal } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-list-recipes',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './list-recipes.component.html',
   styleUrl: './list-recipes.component.css'
 })
 export class ListRecipesComponent {
   api = inject(ApiService);
+  router = inject(Router);
 
   @Input()
   type:string='';
@@ -66,5 +69,10 @@ export class ListRecipesComponent {
         {...state, loading:false, error: 'Categoría incorrecta'}
       ));
     }
+  }
+
+  goToRecipe(idMeal:string){
+    //Navega a recipe/:id
+    this.router.navigate(['recipe', idMeal]);
   }
 }
