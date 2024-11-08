@@ -12,13 +12,11 @@ import { AuthService } from '../../services/auth.service';
 export class LandingComponent {
   auth = inject(AuthService);
   router = inject(Router);
+
   constructor() {
     effect(() => {
-      console.log("EFECTO"+this.auth.$isLoggedIn());
       if (this.auth.$isLoggedIn()) {
         this.router.navigate(['home']);
-      } else {
-        this.router.navigate(['login']);
       }
     })
   }
