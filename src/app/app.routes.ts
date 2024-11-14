@@ -10,7 +10,7 @@ export const routes: Routes = [
     { path: 'home/:type', canMatch:[authenticatedGuard], loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) },
     { path: 'home', redirectTo: '/home/category', pathMatch: 'full' },
     { path: 'recipes/:type/:subtype', loadComponent: () => import('./pages/list-recipes/list-recipes.component').then(m => m.ListRecipesComponent) },
-    { path: 'recipe/favorite', loadComponent: () => import('./pages/list-recipes/list-recipes.component').then(m => m.ListRecipesComponent) },
+    { path: 'recipes/favorites', loadComponent: () => import('./pages/list-recipes/list-recipes.component').then(m => m.ListRecipesComponent) },
     { path: 'recipe/:id', loadComponent: () => import('./pages/view-recipe/view-recipe.component').then(m => m.ViewRecipeComponent) },
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
     { path: '**', component: ErrorPageComponent }
