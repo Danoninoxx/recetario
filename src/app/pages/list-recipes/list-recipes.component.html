@@ -22,7 +22,7 @@
 >
   <h1 class="text-2xl font-bold mb-4">Lista de Recetas</h1>
   <ul class="space-y-4">
-    @for(recipe of $state().data; track recipe.idMeal){
+    @if(type!=undefined){ @for(recipe of $state().data; track recipe.idMeal){
     <li
       class="flex items-center p-4 border rounded-lg shadow hover:bg-gray-100 transition cursor-pointer"
       (click)="goToRecipe(recipe.idMeal)"
@@ -36,9 +36,31 @@
         <h2 class="text-lg font-semibold">{{ recipe.strMeal }}</h2>
       </div>
     </li>
-    }
+    } }
   </ul>
 </div>
+@if(type==undefined){ @for(recipe of $state().data; track recipe.idMeal){
+<li
+  class="flex items-center p-4 border rounded-lg shadow hover:bg-gray-100 transition cursor-pointer"
+  (click)="goToRecipeFav(recipe.idMeal)"
+>
+  <img
+    [src]="recipe.strMealThumb"
+    alt="{{ recipe.strMeal }}"
+    class="h-16 w-16 rounded-md mr-4"
+  />
+  <div>
+    <h2 class="text-lg font-semibold">{{ recipe.strMeal }}</h2>
+  </div>
+  <button
+    id="deleteButton"
+    (click)="deleteRecipe($event, recipe.idMeal)"
+    class="mt-4 bg-red-400 hover:bg-red-400 text-white py-2 px-4 rounded"
+  >
+    Eliminar Receta
+  </button>
+</li>
+}
 <div class="fixed bottom-5 left-1/2 transform-translate-x-1/2">
   <button
     (click)="openModal()"
@@ -51,4 +73,4 @@
   [isOpen]="isModalOpen"
   (onClose)="closeModal($event)"
 ></app-form-modal>
-}
+} }

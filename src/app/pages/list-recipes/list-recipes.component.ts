@@ -52,7 +52,7 @@ export class ListRecipesComponent {
         request = this.api.getRecipesByNationality(this.subtype);
         break;
       case undefined:
-        request = this.fire.getRecipes();
+        request = this.fire.getRecipesWithID();
         break;
       default:
         request = null;
@@ -85,6 +85,10 @@ export class ListRecipesComponent {
     this.router.navigate(['recipe', idMeal]);
   }
 
+  goToRecipeFav(idMeal:string){
+    this.router.navigate(['recipe-fav', idMeal]);
+  }
+
   openModal(){
     this.isModalOpen = true;
     history.pushState({},document.title);
@@ -95,5 +99,12 @@ export class ListRecipesComponent {
       console.log("Desde el componente que abre el modal "+$event);
     }
     this.isModalOpen = false;
+  }
+
+  deleteRecipe(event:any,idMeal:any){
+    event.stopPropagation();
+    if(confirm(("¿Desea borrarlo de verdad?"))){
+       this.fire.deleteRecipe(idMeal)
+    }
   }
 }

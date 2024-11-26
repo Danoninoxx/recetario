@@ -1,0 +1,65 @@
+.camera-button {
+    margin: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  /* Estilo específico para el botón "Enable Camera" */
+  .enable-camera {
+    background-color: #28a745;  /* Verde */
+    color: white;
+  }
+
+  .enable-camera:hover {
+    background-color: #218838;  /* Verde oscuro */
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+
+  /* Estilo específico para el botón "Capture from Camera" */
+  .capture-camera {
+    background-color: #007bff;  /* Azul */
+    color: white;
+  }
+
+  .capture-camera:hover {
+    background-color: #0056b3;  /* Azul oscuro */
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+
+  /* Estilo específico para el botón "Stop Camera" */
+  .stop-camera {
+    background-color: #dc3545;  /* Rojo */
+    color: white;
+  }
+
+  .stop-camera:hover {
+    background-color: #c82333;  /* Rojo oscuro */
+    transform: scale(1.05); /* Efecto de aumento */
+  }
+
+  /* Efecto cuando el botón está deshabilitado (opcional) */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;  /* Sin efecto de aumento */
+  }
+  
+  canvas {
+    border: 1px solid #ccc;
+    max-width: 30%;
+    height: auto;
+  }
+  
+  video {
+    border: 1px solid #ccc;
+    max-width: 30%;
+    height: auto;
+  }
+  hidden{
+    display:none;
+  }

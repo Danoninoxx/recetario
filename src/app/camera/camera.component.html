@@ -1,0 +1,44 @@
+<div class="image-capture">
+  <input
+    #fileInput
+    type="file"
+    accept="image/*"
+    (change)="onFileChange($event)"
+    [ngClass]="{ hidden: isCameraSelected }"
+  />
+
+  <div class="flex items-center justify-center">
+    <video
+      #video
+      autoplay
+      playsinline
+      [ngClass]="{ hidden: !isCameraSelected }"
+      class="max-w-full"
+    ></video>
+  </div>
+  <div class="flex items-center justify-center">
+    <canvas
+      #canvas
+      style="max-width: 50%; height: auto"
+      [ngClass]="{ hidden: !fileBase64 }"
+      class="max-w-full ml-4"
+    ></canvas>
+  </div>
+  <div class="flex items-center justify-center">
+    @if(isCameraActive){
+    <button (click)="stopCamera($event)" class="camera-button stop-camera">
+      ■
+    </button>
+    <button
+      (click)="captureFromCamera($event)"
+      class="camera-button capture-camera"
+    >
+      📷
+    </button>
+    }@else {
+    <button (click)="startCamera($event)" class="camera-button enable-camera">
+      Enable Camera
+    </button>
+    }
+  </div>
+</div>
